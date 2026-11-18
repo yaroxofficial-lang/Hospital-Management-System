@@ -1,0 +1,57 @@
+                       DOCTOR
+package hospital.doctor;
+
+import hospital.users.User;
+import hospital.patient.Patient;
+
+public class Doctor extends User {
+
+    public Doctor(String name) {
+        super(name, Role.DOCTOR, "Medical Department");
+    }
+
+    public void checkPatient(Patient patient) {
+
+        System.out.println("\nDoctor: " + getName());
+
+        // Accessing protected variable
+        System.out.println("Department: " + department);
+
+        System.out.println("Patient: " + patient.getPatientName());
+
+        patient.viewMedicalHistory(this);
+    }
+
+    public void updatePatientRecord(Patient patient, String history) {
+
+        patient.updateMedicalHistory(this, history);
+    }
+}
+
+                       RECEPTIONIST
+
+package hospital.reception;
+
+import hospital.users.User;
+import hospital.patient.Patient;
+
+public class Receptionist extends User {
+
+    public Receptionist(String name) {
+        super(name, Role.RECEPTIONIST, "Reception Department");
+    }
+
+    public void viewPatientDetails(Patient patient) {
+
+        System.out.println("\nReceptionist: " + getName());
+
+        System.out.println("Patient Name: "
+                + patient.getPatientName());
+
+        System.out.println("Appointment Date: "
+                + patient.getAppointmentDate());
+
+        System.out.println("Medical records are restricted.");
+    }
+}
+
