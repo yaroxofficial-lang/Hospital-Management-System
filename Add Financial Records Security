@@ -1,0 +1,21 @@
+package hospital.admin;
+
+class FinancialRecords {
+
+    private double hospitalRevenue = 5000000;
+    private double hospitalExpenses = 2000000;
+
+    void displayFinancialRecords() {
+
+        System.out.println("\n===== FINANCIAL RECORDS =====");
+
+        System.out.println("Hospital Revenue: "
+                + hospitalRevenue);
+
+        System.out.println("Hospital Expenses: "
+                + hospitalExpenses);
+
+        System.out.println("Net Profit: "
+                + (hospitalRevenue - hospitalExpenses));
+    }
+}
