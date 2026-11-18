@@ -1,0 +1,50 @@
+package hospital.admin;
+
+import hospital.patient.Patient;
+import hospital.doctor.Doctor;
+import hospital.reception.Receptionist;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        // Create patient
+        Patient patient = new Patient(
+                "John Peter",
+                "20 November 2026",
+                "Malaria and Fever"
+        );
+
+        // Create doctor and receptionist
+        Doctor doctor = new Doctor("Dr. James");
+
+        Receptionist receptionist =
+                new Receptionist("Mary");
+
+        System.out.println("===== HOSPITAL MANAGEMENT SYSTEM =====");
+
+        // Receptionist views basic information
+        receptionist.viewPatientDetails(patient);
+
+        // Doctor accesses medical information
+        doctor.checkPatient(patient);
+
+        // Doctor updates medical records
+        doctor.updatePatientRecord(
+                patient,
+                "Recovered from malaria"
+        );
+
+        // Demonstrate restricted access
+        System.out.println("\n===== ACCESS RESTRICTION TEST =====");
+
+        patient.viewMedicalHistory(receptionist);
+
+        // Administration accesses financial records
+        FinancialRecords records = new FinancialRecords();
+
+        records.displayFinancialRecords();
+
+        System.out.println("\n===== END OF SYSTEM =====");
+    }
+}
