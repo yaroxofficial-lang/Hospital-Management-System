@@ -1,0 +1,80 @@
+package hospital.patient;
+
+import hospital.users.User;
+
+public class Patient {
+
+    private String patientName;
+    private String appointmentDate;
+    private String medicalHistory;
+
+    public Patient(String name, String date, String history) {
+        patientName = name;
+        appointmentDate = date;
+        medicalHistory = history;
+    }
+
+    // Public methods for basic information
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public String getAppointmentDate() {
+        return appointmentDate;
+    }
+
+    // Restrict medical information to doctors
+    public void viewMedicalHistory(User user) {
+
+        if (user.getRole() == User.Role.DOCTOR) {
+            System.out.println("Medical History: " + medicalHistory);
+        } else {
+            System.out.println("Access Denied! Doctors only.");
+        }
+    }
+
+    public void updateMedicalHistory(User user, String history) {
+
+        if (user.getRole() == User.Role.DOCTOR) {
+            medicalHistory = history;
+            System.out.println("Medical record updated successfully.");
+        } else {
+            System.out.println("Access Denied! Only doctors can update records.");
+        }
+    }
+}
+                              
+
+
+                                                 USER
+package hospital.users;
+
+public class User {
+
+    private String name;
+    private Role role;
+
+    // Protected variable
+    protected String department;
+
+    public enum Role {
+        DOCTOR,
+        RECEPTIONIST,
+        ADMIN
+    }
+
+    public User(String name, Role role, String department) {
+        this.name = name;
+        this.role = role;
+        this.department = department;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+}
+
